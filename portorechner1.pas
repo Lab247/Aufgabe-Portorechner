@@ -13,16 +13,16 @@ type
   { TfrmPortoRechner }
 
   TfrmPortoRechner = class(TForm)
-    cmdClose: TButton;
-    cmdBerechnen: TButton;
+    btnClose: TButton;
+    btnBerechnen: TButton;
     lblHeader: TLabel;
-    txtGewicht: TEdit;
+    edtGewicht: TEdit;
     frmPortoRechner: TLabel;
     lblGewicht: TLabel;
     pnlPorto: TPanel;
-    procedure cmdBerechnenClick(Sender: TObject);
-    procedure cmdCloseClick(Sender: TObject);
-    procedure txtGewichtChange(Sender: TObject);
+    procedure btnBerechnenClick(Sender: TObject);
+    procedure btnCloseClick(Sender: TObject);
+    procedure edtGewichtChange(Sender: TObject);
   private
 
   public
@@ -38,24 +38,24 @@ implementation
 
 { TfrmPortoRechner }
 
-procedure TfrmPortoRechner.cmdCloseClick(Sender: TObject);
+procedure TfrmPortoRechner.btnCloseClick(Sender: TObject);
 // Beenden Button - Programm beenden
 begin
   close;
 end;
 
-procedure TfrmPortoRechner.txtGewichtChange(Sender: TObject);
+procedure TfrmPortoRechner.edtGewichtChange(Sender: TObject);
 // Änderungen im Eingabefeld lösen sofortige Berechnung aus
 begin
-  cmdBerechnenClick(txtGewicht) // Berechnen Button wird gedrückt
+  btnBerechnenClick(edtGewicht) // Berechnen Button wird gedrückt
 end;
 
-procedure TfrmPortoRechner.cmdBerechnenClick(Sender: TObject);
+procedure TfrmPortoRechner.btnBerechnenClick(Sender: TObject);
 // Variablendefinition für Gewicht und Fehler
 var gewicht, error : integer;
 begin
      // Validieren der Eingabe und Variablen initialisieren
-     val(txtGewicht.Text, gewicht, error);
+     val(edtGewicht.Text, gewicht, error);
      if error = 0 then // Wenn Error 0 dann Integer Wert vorhanden
         begin
           pnlPorto.visible := True; // pnl anzeigen
